@@ -14,6 +14,7 @@ import javax.swing.border.*;
  */
 public class login extends javax.swing.JFrame {
 
+    private static register register = new register();
     /**
      * Creates new form login
      */
@@ -46,7 +47,6 @@ public class login extends javax.swing.JFrame {
         enterText = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         createAccount1 = new javax.swing.JLabel();
-        createAccount = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -227,42 +227,15 @@ public class login extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        createAccount.setBackground(new java.awt.Color(51, 153, 255));
-        createAccount.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        createAccount.setForeground(new java.awt.Color(51, 153, 255));
-        createAccount.setText("Crear cuenta");
-        createAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        createAccount.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                createAccountMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                createAccountMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                createAccountMouseReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(createAccount)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(createAccount)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -280,20 +253,9 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_enterTextMouseExited
 
-    private void createAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createAccountMouseClicked
-
-    private void createAccountMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createAccountMousePressed
-
-    private void createAccountMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccountMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_createAccountMouseReleased
-
     private void createAccount1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccount1MouseClicked
         this.setVisible(false);
+        register.setVisible(true);
     }//GEN-LAST:event_createAccount1MouseClicked
 
     private void createAccount1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createAccount1MousePressed
@@ -340,7 +302,6 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel createAccount;
     private javax.swing.JLabel createAccount1;
     private javax.swing.JPanel enterButton;
     private javax.swing.JLabel enterText;
