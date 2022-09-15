@@ -363,7 +363,7 @@ public class register extends javax.swing.JFrame {
         String telefono = jTextField11.getText().toString();
         String compania_telefono = jComboBox2.getSelectedItem().toString();
         String correo_electronico = jTextField12.getText().toString();
-        String contrasena = jPasswordField1.getPassword().toString();
+        String contrasena = jPasswordField1.getText().toString();
 
         JTextField[] arr = {
                 jTextField2,

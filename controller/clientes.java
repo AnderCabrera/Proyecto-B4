@@ -1,31 +1,33 @@
 package controller;
 
 import java.sql.*;
+import databases.*;
 //import register from src\views\register.java
 
 public class clientes {
 
-  // singleton pattern to class clientes
   private static clientes instancia;
   private Connection conexion;
-
+  // connection con = connection.getInstancia();
+  
+  
   public clientes() {
     conexion = databases.connection.getInstancia().getConexion();
   }
-
+  
   public synchronized static clientes getInstancia() {
     if (instancia == null)
-      instancia = new clientes();
+    instancia = new clientes();
     return instancia;
   }
-
-    
+  
+  
   public void insertarClientes(String nombre, String apellido, String sexo, String direccion, String nacionalidad,
-      String dpi,
-      String telefono, String compania_telefono, String correo_electronico, String contrasena) {
+  String dpi,
+  String telefono, String compania_telefono, String correo_electronico, String contrasena) {
 
     try {
-      String url = "jdbc:mysql://localhost:3306/sistema_bancario?TimeZone=UTC";
+      String url = "jdbc:mysql://localhost:3306/sistema_bancario?TimeZone=UTC&useSSL=false";
       String user = "root";
       String password = "mysql.com";
 

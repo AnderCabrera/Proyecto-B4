@@ -8,29 +8,37 @@ public class connection {
     private String url = "jdbc:mysql://localhost:3306/sistema_bancario?TimeZone=UTC&useSSL=false";
     private String user = "root";
     private String password = "mysql.com";
-    private Connection conexion;
+
+    // singleton method to gen Connection
     private static connection instancia;
     
-    public connection(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+    private Connection conexion;
+
+    private connection() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection(url, user, password);
-        }catch(Exception error){
-            error.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    
-    public synchronized static connection getInstancia(){
-       if (instancia == null)
-           instancia = new connection();
-       return instancia;
+
+    public synchronized static connection getInstancia() {
+        if (instancia == null)
+            instancia = new connection();
+        return instancia;
     }
-    
-    public Connection getConexion(){
+
+    public Connection getConexion() {
         return conexion;
     }
-    
-    public void setConexion(Connection conexion){
-        this.conexion = conexion;
+
+    public void close() {
+        try {
+            conexion.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 }

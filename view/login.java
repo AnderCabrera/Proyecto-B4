@@ -7,6 +7,7 @@ package view;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import controller.*;
 
 /**
  *
@@ -15,6 +16,10 @@ import javax.swing.border.*;
 public class login extends javax.swing.JFrame {
 
     private static register register = new register();
+    private static validateLogin vLogin = new validateLogin();
+    private static lobby Lobby = new lobby();
+    private static String usr = "";
+
     /**
      * Creates new form login
      */
@@ -40,13 +45,13 @@ public class login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         loginTitle = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         enterButton = new javax.swing.JPanel();
         enterText = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         createAccount1 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +80,6 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Contraseña");
-
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setForeground(new java.awt.Color(51, 51, 51));
-        jTextField3.setBorder(null);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Password2.png"))); // NOI18N
 
@@ -137,6 +138,9 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField1.setBorder(null);
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
@@ -155,10 +159,10 @@ public class login extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1))
                             .addGroup(loginPanelLayout.createSequentialGroup()
-                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                    .addComponent(jPasswordField1))
+                                .addGap(12, 12, 12)
                                 .addComponent(jLabel4))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
@@ -197,13 +201,13 @@ public class login extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(loginPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
-                .addGap(33, 33, 33)
+                .addGap(39, 39, 39)
                 .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(createAccount1)
@@ -241,8 +245,25 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String getUserName() {
+        return usr;
+    }
+
     private void enterTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterTextMouseClicked
-        // TODO add your handling code here:
+        String usuario = jTextField2.getText().toString();
+        String password = jPasswordField1.getText().toString();
+        
+        vLogin.validarUsuario(usuario, password);
+        
+        if(vLogin.getComprobacion()) {
+            usr = usuario;
+            this.setVisible(false);
+            Lobby.setVisible(true);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+            jTextField2.setText("");
+            jPasswordField1.setText("");
+        }
     }//GEN-LAST:event_enterTextMouseClicked
 
     private void enterTextMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterTextMouseEntered
@@ -310,10 +331,10 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel loginTitle;
     private javax.swing.JPanel mainPanel;

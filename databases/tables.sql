@@ -82,4 +82,4 @@ CREATE TABLE IF NOT EXISTS servicios_cancelados (
     FOREIGN KEY (id_cuenta) REFERENCES cuentas(id_cuenta)
 );
 
-INSERT INTO servicios (tipo_servicio) VALUES ("Agua");
+-- INSERT INTO servicios (tipo_servicio) VALUES ("Agua");
