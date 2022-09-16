@@ -15,7 +15,7 @@ import controller.*;
  */
 public class login extends javax.swing.JFrame {
 
-    private static register register = new register();
+    private static cuenta register = new cuenta();
     private static validateLogin vLogin = new validateLogin();
     private static lobby Lobby = new lobby();
     private static String usr = "";
@@ -93,7 +93,7 @@ public class login extends javax.swing.JFrame {
         enterText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         enterText.setText("ENTRAR");
         enterText.setToolTipText("");
-        enterText.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        enterText.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         enterText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 enterTextMouseClicked(evt);
