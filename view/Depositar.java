@@ -4,16 +4,20 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Deran
  */
-public class depositar extends javax.swing.JFrame {
+public class Depositar extends javax.swing.JFrame {
+    private static agregarCuenta dineroAgregar = new agregarCuenta();
+    private static lobby Lobby = new lobby();
 
     /**
      * Creates new form Depositar
      */
-    public depositar() {
+    public Depositar() {
         initComponents();
     }
 
@@ -67,6 +71,11 @@ public class depositar extends javax.swing.JFrame {
         enterText1.setText("DEPOSITAR");
         enterText1.setToolTipText("");
         enterText1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterText1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterText1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout enterButton1Layout = new javax.swing.GroupLayout(enterButton1);
         enterButton1.setLayout(enterButton1Layout);
@@ -151,6 +160,16 @@ public class depositar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void enterText1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterText1MouseClicked
+        // TODO add your handling code here:
+        int dinero = Integer.parseInt(jTextField2.getText());
+            dineroAgregar.sumarDinero(dinero);
+            JOptionPane.showMessageDialog(null, "Dinero agregado correctamente");
+            this.setVisible(false);
+            Lobby.setVisible(true);
+            jTextField2.setText("");
+    }//GEN-LAST:event_enterText1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -168,13 +187,13 @@ public class depositar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Depositar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -188,7 +207,7 @@ public class depositar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new depositar().setVisible(true);
+                new Depositar().setVisible(true);
             }
         });
     }

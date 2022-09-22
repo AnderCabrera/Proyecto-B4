@@ -8,6 +8,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import controller.*;
+import adminView.*;
 
 /**
  *
@@ -18,6 +19,7 @@ public class login extends javax.swing.JFrame {
     private static cuenta register = new cuenta();
     private static validateLogin vLogin = new validateLogin();
     private static lobby Lobby = new lobby();
+    private static lobbyAdmin lobbyAdmin = new lobbyAdmin();
     private static String usr = "";
 
     /**
@@ -257,9 +259,14 @@ public class login extends javax.swing.JFrame {
         
         if(vLogin.getComprobacion()) {
             usr = usuario;
+            vLogin.setComprobacion(false);
             this.setVisible(false);
             Lobby.setVisible(true);
-        } else {
+        } else if(usuario.equals("Ander") && password.equals("admin123")) {
+            this.setVisible(false);
+            lobbyAdmin.setVisible(true);
+        }
+         else {
             javax.swing.JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
             jTextField2.setText("");
             jPasswordField1.setText("");

@@ -10,6 +10,7 @@ package view;
  */
 public class Retirar extends javax.swing.JFrame {
 
+        private static lobby Lobby = new lobby();
     /**
      * Creates new form Retirar
      */
@@ -67,6 +68,11 @@ public class Retirar extends javax.swing.JFrame {
         enterText1.setText("RETIRAR");
         enterText1.setToolTipText("");
         enterText1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterText1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterText1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout enterButton1Layout = new javax.swing.GroupLayout(enterButton1);
         enterButton1.setLayout(enterButton1Layout);
@@ -148,6 +154,12 @@ public class Retirar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void enterText1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterText1MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Lobby.setVisible(true);
+    }//GEN-LAST:event_enterText1MouseClicked
 
     /**
      * @param args the command line arguments

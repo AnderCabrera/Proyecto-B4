@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS cuentas (
     id_cliente     INT         NOT NULL,
     numero_cuenta  VARCHAR(20) NOT NULL,
     tipo_cuenta    VARCHAR(20) NOT NULL,
-    saldo          FLOAT       NOT NULL,
+    saldo          INT         NOT NULL,
     fecha_creacion DATE        NOT NULL,
     PRIMARY KEY (id_cuenta),
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)

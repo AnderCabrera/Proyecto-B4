@@ -54,4 +54,8 @@ public class validateLogin {
     public boolean getComprobacion() {
         return comprobation;
     }
+
+    public void setComprobacion(boolean comprobation) {
+        this.comprobation = comprobation;
+    }
 }

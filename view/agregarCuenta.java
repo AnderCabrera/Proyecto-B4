@@ -4,11 +4,24 @@
  */
 package view;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+
+import controller.*;
+
 /**
  *
  * @author Deran
  */
 public class agregarCuenta extends javax.swing.JFrame {
+
+    private static cuentaAgregar cuentaAgregar = new cuentaAgregar();
+    private static lobby Lobby = new lobby();
+    private int id_cliente = 0;
+    private int dinero = 0;
 
     /**
      * Creates new form agregarCuenta
@@ -81,6 +94,11 @@ public class agregarCuenta extends javax.swing.JFrame {
         enterText1.setText("CREAR");
         enterText1.setToolTipText("");
         enterText1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterText1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterText1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout enterButton1Layout = new javax.swing.GroupLayout(enterButton1);
         enterButton1.setLayout(enterButton1Layout);
@@ -184,6 +202,39 @@ public class agregarCuenta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public int getDinero(){
+        return dinero;
+    }
+
+    public void setDinero(int saldo) {
+        dinero = dinero + saldo;
+    }
+
+    public void sumarDinero(int saldo){
+        dinero = dinero + saldo;
+    }
+    
+    public void retirarDinero(int dinero) {
+        this.dinero -= dinero;
+    }
+    
+    private void enterText1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterText1MouseClicked
+        // TODO add your handling code here:
+        id_cliente++;
+        String numero_Cuenta = jTextField1.getText();
+        String tipo_cuenta = jComboBox1.getSelectedItem().toString();
+        int saldo = Integer.parseInt(jTextField2.getText());
+        dinero = saldo;
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        System.out.println(timeStamp);
+
+        cuentaAgregar.agregarCuenta(id_cliente, numero_Cuenta, tipo_cuenta, saldo, timeStamp);
+        javax.swing.JOptionPane.showMessageDialog(this, "cuenta agregada");
+        
+        this.setVisible(false);
+        Lobby.setVisible(true);
+    }//GEN-LAST:event_enterText1MouseClicked
 
     /**
      * @param args the command line arguments

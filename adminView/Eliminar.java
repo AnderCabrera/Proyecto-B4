@@ -4,12 +4,16 @@
  */
 package adminView;
 
+import javax.swing.JOptionPane;
+import controller.*;
+
 /**
  *
  * @author Deran
  */
 public class Eliminar extends javax.swing.JFrame {
     private static lobbyAdmin lobby = new lobbyAdmin();
+    private static EliminarUsuario eliminar = new EliminarUsuario();
 
     /**
      * Creates new form Retirar
@@ -104,6 +108,11 @@ public class Eliminar extends javax.swing.JFrame {
         enterText2.setText("ELIMINAR");
         enterText2.setToolTipText("");
         enterText2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enterText2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                enterText2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout enterButton2Layout = new javax.swing.GroupLayout(enterButton2);
         enterButton2.setLayout(enterButton2Layout);
@@ -202,6 +211,21 @@ public class Eliminar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_enterText1MouseClicked
 
+    private void enterText2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterText2MouseClicked
+        // TODO add your handling code here:
+        int id_usuario = Integer.parseInt(jTextField2.getText());
+
+        if (jTextField2.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un ID de usuario");
+        } else {
+            eliminar.EliminarUsuario(id_usuario);
+            JOptionPane.showMessageDialog(null, "Usuario eliminado");
+            jTextField2.setText("");
+            this.setVisible(false);
+            lobby.setVisible(true);
+        }
+    }//GEN-LAST:event_enterText2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -239,31 +263,9 @@ public class Eliminar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel enterButton1;
-    private javax.swing.JPanel enterButton10;
-    private javax.swing.JPanel enterButton11;
-    private javax.swing.JPanel enterButton12;
-    private javax.swing.JPanel enterButton13;
-    private javax.swing.JPanel enterButton14;
-    private javax.swing.JPanel enterButton15;
-    private javax.swing.JPanel enterButton16;
-    private javax.swing.JPanel enterButton17;
-    private javax.swing.JPanel enterButton18;
-    private javax.swing.JPanel enterButton19;
     private javax.swing.JPanel enterButton2;
-    private javax.swing.JPanel enterButton20;
     private javax.swing.JLabel enterText1;
-    private javax.swing.JLabel enterText10;
-    private javax.swing.JLabel enterText11;
-    private javax.swing.JLabel enterText12;
-    private javax.swing.JLabel enterText13;
-    private javax.swing.JLabel enterText14;
-    private javax.swing.JLabel enterText15;
-    private javax.swing.JLabel enterText16;
-    private javax.swing.JLabel enterText17;
-    private javax.swing.JLabel enterText18;
-    private javax.swing.JLabel enterText19;
     private javax.swing.JLabel enterText2;
-    private javax.swing.JLabel enterText20;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
